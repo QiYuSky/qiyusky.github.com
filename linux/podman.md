@@ -27,6 +27,7 @@
 1. 修复拉取镜像时错误
 
         sudo vim /etc/containers/registries.conf
+        
     >-  unqualified-search-registries = ["docker.io"]
 1. 配置文件路径
     - 根配置
