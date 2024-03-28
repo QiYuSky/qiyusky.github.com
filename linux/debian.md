@@ -53,16 +53,11 @@
         or
         /etc/vim/vimrc
         
-    >- #设置行号
-        set nu          
-    >- #设置tab为4个空格
-        set ts=4        
-    >- #设置自动换行
-        set autoindent  
-    >- #设置高亮字符 ------ 在命令行 :noh 取消高亮
-        set hlsearch    
-    >-  #设置vim打开文件，光标保持最下面有5行，最上面也是一样的
-        set scrolloff=5
+    >- #设置行号 <br> set nu          
+    >- #设置tab为4个空格 <br> set ts=4        
+    >- #设置自动换行 <br> set autoindent  
+    >- #设置高亮字符 <br> set hlsearch       
+    >- #设置vim打开文件，光标保持最下面有5行，最上面也是一样的 <br> set scrolloff=5
         
 ***
 ## ssh 登录 <a id="section3"></a>
@@ -70,18 +65,12 @@
 
         sudo vim /etc/ssh/sshd_config
         
-    >- #监听端口  默认22
-        Port xxx
-    >- #是否允许管理员直接登录
-        PermitRootLogin yes
-    >- #最大认证尝试次数
-        MaxAuthTries 6
-    >- #允许的最大会话数
-        MaxSessions 10
-    >- #是否允许支持基于口令的认证
-        PasswordAuthentication yes
-    >- #是否允许公钥认证
-        PubkeyAuthentication yes
+    >- #监听端口  默认22 <br> Port 22
+    >- #是否允许管理员直接登录 <br> PermitRootLogin yes
+    >- #最大认证尝试次数 <br> MaxAuthTries 6
+    >- #允许的最大会话数 <br>  MaxSessions 10
+    >- #是否允许支持基于口令的认证 <br> PasswordAuthentication yes
+    >- #是否允许公钥认证 <br> PubkeyAuthentication yes
 1. 重启 ssh 以应用修改
 
         sudo systemctl restart ssh
