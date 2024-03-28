@@ -8,7 +8,7 @@
         adduser <userName>
 1. 添加用户到超级管理员组
 
-        usermod -aG sudo \<userName>
+        usermod -aG sudo <userName>
 1. 切换用户
 
         su -l <userName>
@@ -52,6 +52,7 @@
         ~/.vimrc   
         or
         /etc/vim/vimrc
+        
     >- #设置行号
         set nu          
     >- #设置tab为4个空格
@@ -68,11 +69,12 @@
 1. 编辑 ssh 配置
 
         sudo vim /etc/ssh/sshd_config
+        
     >- #监听端口  默认22
         Port xxx
     >- #是否允许管理员直接登录
         PermitRootLogin yes
-    >- #最大认证尝试次数，最多可以尝试6次输入密码。之后需要等待某段时间后才能再次输入密码
+    >- #最大认证尝试次数
         MaxAuthTries 6
     >- #允许的最大会话数
         MaxSessions 10

@@ -23,6 +23,7 @@
 1. 配置主题和插件扩展
 
         vim ~/.zshrc
+        
     >- ZSH_THEME="powerlevel10k/powerlevel10k"
     >- plugins=(
     zsh-autosuggestions

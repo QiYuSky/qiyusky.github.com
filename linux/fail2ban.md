@@ -12,7 +12,7 @@
 1. 配置参数
 
         vim /etc/fail2ban/jail.d/jail.local
-        
+
     >- #规则
         [sshd]
     >- #是否启用
