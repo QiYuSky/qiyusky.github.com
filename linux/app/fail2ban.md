@@ -16,7 +16,7 @@
     >- #规则 <br> [sshd]
     >- #是否启用 <br> enabled = true
     >- #行为规则模式 (对应.../action.d/ufw.conf) <br> banaction = ufw
-    >- #监听端口 (ssh端口|22) <br> port = ssh
+    >- #监听端口 (ssh端口\|22) <br> port = ssh
     >- #过滤规则 <br> filter = sshd
     >- #日志路径 <br> logpath = /var/log/auth.log
     >- #失败次数 <br> maxretry = 3

@@ -29,6 +29,12 @@
         sudo vim /etc/containers/registries.conf
         
     >-  unqualified-search-registries = ["docker.io"]
+
+1. 用户退出后 继续执行普通用户启动的服务
+
+        sudo loginctl enable-linger
+1. 如果容器需要访问宿主机
+    > 可以使用 `host.containers.internal` 代替宿主机 ip
 1. 配置文件路径
     - 根配置
         > /usr/share/containers/containers.conf
@@ -42,3 +48,8 @@
         > /etc/containers/registries.d/*
     - 用户配置 会覆盖根配置
         > HOME/.config/containers/registries.conf
+1. 镜像保存位置
+    - root 用户
+        > /var/lib/containers/storage/overlay-images
+    - 普通用户
+        > ~/.local/share/containers/storage/vfs
