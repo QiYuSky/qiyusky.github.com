@@ -15,6 +15,8 @@
         > ufw reload
     - 重置规则策略
         > ufw reset
+    - 查看规则状态
+        > ufw status verbose
     
 1. 规则策略
     - 启用默认允许通过策略
@@ -35,3 +37,18 @@
     - 删除规则
         >- ufw delete allow 22
         >- ufw delete deny 23
+
+1. 转发策略
+    1. 允许接收转发的包
+        
+            vim /etc/default/ufw
+                
+        > DEFAULT_FORWARD_POLICY="ACCEPT"
+    1. 启用内核转发
+
+            vim /etc/ufw/sysctl.conf
+        
+        > net/ipv4/ip_forward=1
+    1. 重载配置
+
+            ufw reload
