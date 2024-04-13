@@ -53,11 +53,11 @@
         or
         /etc/vim/vimrc
         
-    >- #设置行号 <br> set nu          
-    >- #设置tab为4个空格 <br> set ts=4        
-    >- #设置自动换行 <br> set autoindent  
-    >- #设置高亮字符 <br> set hlsearch       
-    >- #设置vim打开文件，光标保持最下面有5行，最上面也是一样的 <br> set scrolloff=5
+    >- " 设置行号 <br> set nu          
+    >- " 设置tab为4个空格 <br> set ts=4        
+    >- " 设置自动换行 <br> set autoindent  
+    >- " 设置高亮字符 <br> set hlsearch       
+    >- " 设置vim打开文件，光标保持最下面有5行，最上面也是一样的 <br> set scrolloff=5
         
 ***
 ## ssh 登录 <a id="section3"></a>
