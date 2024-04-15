@@ -21,6 +21,7 @@ cat ~/.acme.sh/acme.sh.env
 1. HTTP文件验证
 适用于可以直接控制 Web 服务器（如 Nginx、Apache）的情况：
 ```bash
+# 生成证书
 acme.sh --issue -d example.com --webroot /path/to/webroot
 # /path/to/webroot 是您的 Web 服务器文档根目录的路径。
 # 该命令会在指定路径下生成测试文件，并提示访问 http://example.com/.well-known/acme-challenge/test.txt 验证是否成功。
@@ -31,6 +32,7 @@ acme.sh --issue -d example.com --webroot /path/to/webroot
 2. DNS验证
 适用于需要通过修改 DNS 记录进行验证的情况：
 ```bash
+# 生成证书
 acme.sh --issue -d example.com --dns dns_aliacme.sh --issue -d example.com --dns dns_cloudflare --dns_cloudflare_email your@email.com --dns_cloudflare_api_key your_api_key
 # 请替换为实际的 DNS 服务商、邮箱地址和 API 密钥。
 # 该命令会在 Cloudflare 上创建一个 TXT 记录，用于验证 DNS 记录。

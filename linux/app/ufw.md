@@ -26,91 +26,100 @@ ufw status verbose
 
 ## 配置
 1. 使用默认策略
-```bash
-ufw default allow|deny [incoming|outgoing]
-# allow 允许
-# deny 拒绝
-# incoming 表示接收
-# outgoing 表示发送
-# 样例
-ufw default allow incoming
-```
+    ```bash
+    # 设置默认策略
+    ufw default allow|deny [incoming|outgoing]
+    # allow 允许
+    # deny 拒绝
+    # incoming 表示接收
+    # outgoing 表示发送
+    # 样例
+    ufw default allow incoming
+    ```
 
 2. 按照服务进行配置
-```bash
-ufw allow|deny [service]
-# 样例
-ufw allow ssh
-```
+    ```bash
+    # 允许指定服务访问
+    ufw allow|deny [service]
+    # 样例
+    ufw allow ssh
+    ```
 
 3. 按照端口进行配置
-```bash
-ufw allow|deny [port]/[protocol]
-# 样例
-ufw allow 22/tcp
-```
+    ```bash
+    # 允许指定端口访问
+    ufw allow|deny [port]/[protocol]
+    # 样例
+    ufw allow 22/tcp
+    ```
 
 4. 按照 ip 进行配置
-```bash
-ufw allow|deny [ip]/[mask]
-# 样例
-ufw allow from 192.168.0.1
-ufw allow from 192.168.0.1/24
-ufw allow from 192.168.0.1 to any port 80
-ufw allow from any to any port 80
-```
+    ```bash
+    # 允许指定ip访问
+    ufw allow|deny [ip]/[mask]
+    # 样例
+    ufw allow from 192.168.0.1
+    ufw allow from 192.168.0.1/24
+    ufw allow from 192.168.0.1 to any port 80
+    ufw allow from any to any port 80
+    ```
 
 ## 删除规则
 1. 删除指定规则
-```bash
-ufw delete [rule]
-# 样例
-ufw delete allow ssh
-```
+    ```bash
+    # 删除规则
+    ufw delete [rule]
+    # 样例
+    ufw delete allow ssh
+    ```
 
 2. 根据规则序号删除
-```bash
-# 查看规则序号
-ufw status numbered
-# 删除
-ufw delete [number]
-# 样例
-ufw delete 1
-```
+    ```bash
+    # 查看规则序号
+    ufw status numbered
+    # 删除
+    ufw delete [number]
+    # 样例
+    ufw delete 1
+    ```
 
 
 3. 删除所有规则
-```bash
-ufw reset
-```
+    ```bash
+    ufw reset
+    ```
 
 
 ## 转发策略
 1. 设置允许转发的包
-```bash
-sudo vim /etc/default/ufw
+    ```bash
+    # 打开配置文件
+    sudo vim /etc/default/ufw
 
-# 允许转发
-DEFAULT_FORWARD_POLICY="ACCEPT"
+    # 允许转发
+    DEFAULT_FORWARD_POLICY="ACCEPT"
 
-# 保存退出
-:wq
-```
+    # 保存退出
+    :wq
+    ```
 
 2. 启用内核转发
-```bash
-sudo sysctl -w net.ipv4.ip_forward=1
-```
-or
-```bash
-sudo vim /etc/ufw/sysctl.conf
+    ```bash
+    # 修改配置
+    sudo sysctl -w net.ipv4.ip_forward=1
+    ```
+    or
+    ```bash
+    sudo vim /etc/ufw/sysctl.conf
 
-# 修改配置
-net/ipv4/ip_forward=1
+    # 修改配置
+    net/ipv4/ip_forward=1
 
-# 保存退出
-:wq
-```
+    # 保存退出
+    :wq
+    ```
 
 3. 重载配置
-ufw reload
+    ```bash
+    ufw reload
+    ```
