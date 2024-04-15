@@ -1,7 +1,9 @@
-# UFW 
+# UFW
+
 ufw 是一个基于iptables的防火墙管理工具。它提供了一个易于理解和使用的命令行界面，使用户能够快速设置防火墙规则以控制进出系统的网络流量。
 
 ## 准备环境
+
 ```bash
 # 安装
 sudo apt-get install ufw
@@ -13,6 +15,7 @@ ufw enable
 ```
 
 ## 基本语法
+
 ```bash
 # 关闭防火墙
 ufw disable
@@ -25,7 +28,9 @@ ufw status verbose
 ```
 
 ## 配置
+
 1. 使用默认策略
+
     ```bash
     # 设置默认策略
     ufw default allow|deny [incoming|outgoing]
@@ -38,6 +43,7 @@ ufw status verbose
     ```
 
 2. 按照服务进行配置
+
     ```bash
     # 允许指定服务访问
     ufw allow|deny [service]
@@ -46,6 +52,7 @@ ufw status verbose
     ```
 
 3. 按照端口进行配置
+
     ```bash
     # 允许指定端口访问
     ufw allow|deny [port]/[protocol]
@@ -54,6 +61,7 @@ ufw status verbose
     ```
 
 4. 按照 ip 进行配置
+
     ```bash
     # 允许指定ip访问
     ufw allow|deny [ip]/[mask]
@@ -65,7 +73,9 @@ ufw status verbose
     ```
 
 ## 删除规则
+
 1. 删除指定规则
+
     ```bash
     # 删除规则
     ufw delete [rule]
@@ -74,6 +84,7 @@ ufw status verbose
     ```
 
 2. 根据规则序号删除
+
     ```bash
     # 查看规则序号
     ufw status numbered
@@ -83,15 +94,16 @@ ufw status verbose
     ufw delete 1
     ```
 
-
 3. 删除所有规则
+
     ```bash
     ufw reset
     ```
 
-
 ## 转发策略
+
 1. 设置允许转发的包
+
     ```bash
     # 打开配置文件
     sudo vim /etc/default/ufw
@@ -104,11 +116,14 @@ ufw status verbose
     ```
 
 2. 启用内核转发
+
     ```bash
     # 修改配置
     sudo sysctl -w net.ipv4.ip_forward=1
     ```
+
     or
+
     ```bash
     sudo vim /etc/ufw/sysctl.conf
 
@@ -120,6 +135,7 @@ ufw status verbose
     ```
 
 3. 重载配置
+
     ```bash
     ufw reload
     ```

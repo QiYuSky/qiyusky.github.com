@@ -1,7 +1,9 @@
 # ACME.SH 证书自动签发
+
 [acme.sh](https://github.com/acmesh-official/acme.sh) 是一个用 Shell 脚本编写的工具，用于自动化从 Let's Encrypt 或 ZeroSSL 等证书颁发机构（CA）获取和更新 TLS/SSL 证书。
 
 ## 准备环境
+
 ```bash
 # 安装
 curl https://get.acme.sh | sh
@@ -18,33 +20,39 @@ cat ~/.acme.sh/acme.sh.env
 ```
 
 ## 签发证书
+
 1. HTTP文件验证
 适用于可以直接控制 Web 服务器（如 Nginx、Apache）的情况：
-```bash
-# 生成证书
-acme.sh --issue -d example.com --webroot /path/to/webroot
-# /path/to/webroot 是您的 Web 服务器文档根目录的路径。
-# 该命令会在指定路径下生成测试文件，并提示访问 http://example.com/.well-known/acme-challenge/test.txt 验证是否成功。
-# 如果成功，则会在 ~/.acme.sh/example.com/ 目录下生成证书文件。
-```
->- acme.sh 如果不能直接访问 Web 服务器文档根目录下的文件。可以先执行一遍命令以生成测试文件，把测试文件上传到服务器上，然后再次执行 --issue 命令来正常生成证书。
+
+    ```bash
+    # 生成证书
+    acme.sh --issue -d example.com --webroot /path/to/webroot
+    # /path/to/webroot 是您的 Web 服务器文档根目录的路径。
+    # 该命令会在指定路径下生成测试文件，并提示访问 http://example.com/.well-known/acme-challenge/test.txt 验证是否成功。
+    # 如果成功，则会在 ~/.acme.sh/example.com/ 目录下生成证书文件。
+    ```
+    >
+    >- acme.sh 如果不能直接访问 Web 服务器文档根目录下的文件。可以先执行一遍命令以生成测试文件，把测试文件上传到服务器上，然后再次执行 --issue 命令来正常生成证书。
 
 2. DNS验证
 适用于需要通过修改 DNS 记录进行验证的情况：
-```bash
-# 生成证书
-acme.sh --issue -d example.com --dns dns_aliacme.sh --issue -d example.com --dns dns_cloudflare --dns_cloudflare_email your@email.com --dns_cloudflare_api_key your_api_key
-# 请替换为实际的 DNS 服务商、邮箱地址和 API 密钥。
-# 该命令会在 Cloudflare 上创建一个 TXT 记录，用于验证 DNS 记录。
-```
+
+    ```bash
+    # 生成证书
+    acme.sh --issue -d example.com --dns dns_aliacme.sh --issue -d example.com --dns dns_cloudflare --dns_cloudflare_email your@email.com --dns_cloudflare_api_key your_api_key
+    # 请替换为实际的 DNS 服务商、邮箱地址和 API 密钥。
+    # 该命令会在 Cloudflare 上创建一个 TXT 记录，用于验证 DNS 记录。
+    ```
 
 3. 生成结果
 验证通过后，Acme.sh 会为您签发证书。证书默认保存在 ~/.acme.sh/example.com/ 目录下，包括：
-* example.com.crt: 包含完整证书链的PEM格式证书文件。
-* example.com.key: 私钥文件。
-* example.com.cer: 只包含域名证书的PEM格式文件。
+
+    - example.com.crt: 包含完整证书链的PEM格式证书文件。
+    - example.com.key: 私钥文件。
+    - example.com.cer: 只包含域名证书的PEM格式文件。
 
 ## 配置 Web 服务器
+
 ```bash
 # 复制证书文件
 acme.sh --installcert -d example.com \
@@ -57,10 +65,12 @@ acme.sh --installcert -d example.com \
 ```
 
 ## 自动续期
+
 Acme.sh 默认会设置定时任务（cron job），定期检查并自动续期即将过期的证书。会根据之前执行的命令行参数，自动更新证书。
 ~/.acme.sh/example.com/example.com.conf 中记录操作参数。
 
 ## 其他操作
+
 ```bash
 # 查看生成的证书列表
 acme.sh --list
@@ -69,8 +79,8 @@ acme.sh --list
 acme.sh --info -d example.com
 ```
 
-
 ## * nginx ssl 配置
+
 ```bash
 # 配置nginx
 server {

@@ -1,7 +1,9 @@
 # PODMAN
+
 podman 是一个容器管理工具，可以很方便的管理容器。它与 docker 相比，比 docker 更轻量级，而且支持更多的功能。比如，docker 需要 root权限，而 podman 不需要。
 
 ## 准备环境
+
 ```bash
 # 安装依赖
 sudo apt-get install podman
@@ -11,6 +13,7 @@ sudo systemctl enable podman.socket
 ```
 
 ## 使用 docker 镜像仓库
+
 ```bash
 sudo vim /etc/containers/registries.conf
 # 添加以下内容
@@ -18,6 +21,7 @@ unqualified-search-registries = ["docker.io"]
 ```
 
 ## 基本命令
+
 ```bash
 # 搜索镜像
 podman search <image_name>
@@ -42,6 +46,7 @@ podman exec -it <container_id> bash
 ```
 
 ## 运行容器
+
 ```bash
 podman run -itd --name <container_name> -p <host_port>:<container_port> -v <host_path>:<container_path> <image_name>
 # -i 表示交互模式
@@ -55,13 +60,15 @@ podman run -d --name mysql -p 3306:3306 -v /home/<user>/mysql:/var/lib/mysql mys
 ```
 
 ## 文件路径
+
 1. 配置文件路径
     1. root 用户的路径是 **/etc/containers/containers.conf**
-    2. 普通 用户的路径是 **/home/<user>/.config/containers/containers.conf**
+    2. 普通 用户的路径是 **～/.config/containers/containers.conf**
 2. 容器配置文件保存
     1. root 用户的路径是 **/var/lib/containers/storage/overlay**
-    2. 普通用户的路径是 **/home/<user>/.local/share/containers/storage/overlay**
+    2. 普通用户的路径是 **～/.local/share/containers/storage/overlay**
 
 ## 扩展知识
+
 1. 因为 podman 是无根的，所以用户退出后，启动的容器会自动停止。可以使用 **sudo loginctl enable-linger** 启用linger模式，使得在系统关闭时，当前用户的服务能够继续运行
 2. 容器内需要访问宿主机时，可以使用 **host.containers.internal** 替代宿主机 ip
