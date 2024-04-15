@@ -1,9 +1,11 @@
 # QiYuSky
 
+****
+
 # 服务器运维相关
 1. 服务器运维笔记
 
-    [基础配置](./linux/debian.md) \| [基础命令](./linux/command.md)
+    [基础配置](./linux/debian.md) \| [基础命令](./linux/command.md) \| [基本优化](./linux/optimize.md)
     
 1. 应用配置
 
