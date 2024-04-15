@@ -95,4 +95,4 @@ swap 是 linux 中的一个虚拟内存，如果内存不足，建议在服务�
     > 2. **chmod**: 修改文件权限。
     > 3. **mkswap**: 格式化 swap 文件。
     > 4. **swapon**: 启用 swap 文件。
-    > 5. **echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab**: 将 swap 文件添加到 fstab 文件中，使得 swap 文件在重启后自动启用。
+    > 5. **echo**: 将 swap 文件添加到 fstab 文件中，使得 swap 文件在重启后自动启用。

@@ -28,7 +28,6 @@ ufw status verbose
 1. 使用默认策略
 ```bash
 ufw default allow|deny [incoming|outgoing]
-
 # allow 允许
 # deny 拒绝
 # incoming 表示接收

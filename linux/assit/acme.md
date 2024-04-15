@@ -22,7 +22,6 @@ cat ~/.acme.sh/acme.sh.env
 适用于可以直接控制 Web 服务器（如 Nginx、Apache）的情况：
 ```bash
 acme.sh --issue -d example.com --webroot /path/to/webroot
-
 # /path/to/webroot 是您的 Web 服务器文档根目录的路径。
 # 该命令会在指定路径下生成测试文件，并提示访问 http://example.com/.well-known/acme-challenge/test.txt 验证是否成功。
 # 如果成功，则会在 ~/.acme.sh/example.com/ 目录下生成证书文件。
