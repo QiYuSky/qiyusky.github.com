@@ -7,21 +7,16 @@
 1. 创建用户:
 
     ```bash
+    # 创建用户名为 username 的用户
     adduser username
     ```
-
-    > 说明: 添加用户名为 **username** 的用户。
 
 2. 添加用户权限:
 
     ```bash
+    # 添加用户 username 到 sudo 组
     usermod -aG sudo username
     ```
-
-    > 说明: 将用户添加到 **sudo** 组，使得用户可以执行 **root** 权限下的命令。
-    > 1. **-a**: 添加用户到指定的组。
-    > 2. **-G**: 指定用户要加入的组。
-    > 3. **sudo**: 指定要添加的用户组。
 
 3. 切换用户:
 
@@ -29,7 +24,7 @@
     su username
     ```
 
-    > 意外情况，使用 **sudo xxxx** 时出现 **-bash: sudo command not found**
+    * 如果出现 意外情况，使用 **sudo xxxx** 时出现 **-bash: sudo command not found**
     > 1. 检查 **sudo** 是否安装: **which sudo**
     > 2. 如果没有安装, 则安装: **apt install sudo**
 
@@ -38,37 +33,32 @@
 1. 修改 ssh 配置:
 
     ```bash
+    # 编辑配置
     sudo vim /etc/ssh/sshd_config
+
     # 修改配置
     Port 22
     PermitRootLogin no
     PasswordAuthentication no
     PubkeyAuthentication yes
     AllowUsers username
+
     # 保存退出
     :wq
     ```
 
-    > 说明:
-    > 1. **Port**: 指定 ssh 端口。
-    > 2. **PermitRootLogin**: 指定是否允许 root 登录。
-    > 3. **PasswordAuthentication**: 指定是否允许密码登录。
-    > 4. **PubkeyAuthentication**: 指定是否允许 ssh key 登录。
-    > 5. **AllowUsers**: 指定允许登录的用户。
-
 2. 添加 ssh key:
 
     ```bash
+    # 创建 .ssh 目录
     mkdir ~/.ssh
+
+    # 将 public_key 添加到 authorized_keys 中。 public_key: 指定 ssh key 的公钥。
     echo "<public_key>" >> ~/.ssh/authorized_keys
+
+    # 修改权限
     chmod 600 ~/.ssh/authorized_keys
     ```
-
-    > 说明:
-    > 1. **mkdir ~/.ssh**: 创建 .ssh 目录。
-    > 2. **<public_key>**: 指定 ssh key 的公钥。
-    > 3. **>>**: 将内容追加写入 authorized_keys 文件。
-    > 4. **chmod 600**: 指定 ssh key 的权限。
 
 3. 重启 ssh 服务:
 
@@ -79,14 +69,14 @@
 4. 测试 ssh 登录:
 
     ```bash
+    # ssh 登录
     ssh -p 22 -i ~/.ssh/id_rsa username@ip
-    ```
 
-    > 说明:
-    > 1. **-p**: 指定 ssh 端口。默认是 22 端口，可以省略此参数。
-    > 2. **-i**: 指定 ssh key 的路径。
-    > 3. **username**: 指定用户名。
-    > 4. **ip**: 指定服务器的 ip。
+    # 说明:
+    # -p : 指定 ssh 端口。默认是 22 端口，可以省略此参数。
+    # -i : 指定 ssh key 的路径。
+    # username@ip: 指定用户名和服务器的 ip。
+    ```
 
 ## 开启 swap
 
@@ -95,26 +85,30 @@ swap 是 linux 中的一个虚拟内存，如果内存不足，建议在服务�
 1. 查看 swap 状态:
 
     ```bash
+    # 查看 swap 状态，-m: 以 MB 为单位显示。
     free -m
+
+    # 如果 swap 显示 0, 则需要开启 swap。
     ```
 
-    > 说明:
-    > 1. **-m**: 以 MB 为单位显示。
-    > 2. 如果 **swap** 为 0, 则需要开启 swap。
 2. 开启 swap:
 
     ```bash
+    # 创建一个指定大小的文件。建议swap大小为内存的 2 倍。
     sudo fallocate -l 4G /swapfile
+
+    # 修改文件权限
     sudo chmod 600 /swapfile
+
+    # 格式化 swap 文件
     sudo mkswap /swapfile
+
+    # 启用 swap
     sudo swapon /swapfile
+
+    # 将 swap 文件添加到 fstab 文件中，使得 swap 文件在重启后自动启用。
     echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
+
+    # 查看 swap 状态
     free -m
     ```
-
-    > 说明:
-    > 1. **fallocate**: 创建一个指定大小的文件。建议swap大小为内存的 2 倍。
-    > 2. **chmod**: 修改文件权限。
-    > 3. **mkswap**: 格式化 swap 文件。
-    > 4. **swapon**: 启用 swap 文件。
-    > 5. **echo**: 将 swap 文件添加到 fstab 文件中，使得 swap 文件在重启后自动启用。

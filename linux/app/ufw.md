@@ -38,6 +38,7 @@ ufw status verbose
     # deny 拒绝
     # incoming 表示接收
     # outgoing 表示发送
+
     # 样例
     ufw default allow incoming
     ```
@@ -47,6 +48,7 @@ ufw status verbose
     ```bash
     # 允许指定服务访问
     ufw allow|deny [service]
+
     # 样例
     ufw allow ssh
     ```
@@ -56,6 +58,7 @@ ufw status verbose
     ```bash
     # 允许指定端口访问
     ufw allow|deny [port]/[protocol]
+    
     # 样例
     ufw allow 22/tcp
     ```
@@ -65,6 +68,7 @@ ufw status verbose
     ```bash
     # 允许指定ip访问
     ufw allow|deny [ip]/[mask]
+
     # 样例
     ufw allow from 192.168.0.1
     ufw allow from 192.168.0.1/24
@@ -79,6 +83,7 @@ ufw status verbose
     ```bash
     # 删除规则
     ufw delete [rule]
+
     # 样例
     ufw delete allow ssh
     ```
@@ -88,8 +93,10 @@ ufw status verbose
     ```bash
     # 查看规则序号
     ufw status numbered
+
     # 删除
     ufw delete [number]
+
     # 样例
     ufw delete 1
     ```

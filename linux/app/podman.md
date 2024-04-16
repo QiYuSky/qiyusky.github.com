@@ -7,6 +7,7 @@ podman 是一个容器管理工具，可以很方便的管理容器。它与 doc
 ```bash
 # 安装依赖
 sudo apt-get install podman
+
 # 启动服务
 sudo systemctl start podman.socket
 sudo systemctl enable podman.socket
@@ -15,7 +16,9 @@ sudo systemctl enable podman.socket
 ## 使用 docker 镜像仓库
 
 ```bash
+# 编辑配置文件
 sudo vim /etc/containers/registries.conf
+
 # 添加以下内容
 unqualified-search-registries = ["docker.io"]
 ```
@@ -25,22 +28,31 @@ unqualified-search-registries = ["docker.io"]
 ```bash
 # 搜索镜像
 podman search <image_name>
+
 # 拉取镜像
 podman pull <image_name>
+
 # 列出所有镜像
 podman images
+
 # 删除镜像
 podman rmi <image_id>
+
 # 列出所有容器
 podman ps -a
+
 # 启动容器
 podman start <container_id>
+
 # 停止容器
 podman stop <container_id>
+
 # 删除容器
 podman rm <container_id>
+
 # 查看容器日志
 podman logs <container_id>
+
 # 进入容器
 podman exec -it <container_id> bash
 ```
@@ -55,6 +67,7 @@ podman run -itd --name <container_name> -p <host_port>:<container_port> -v <host
 # --name <container_name> 表示给容器起一个名字
 # -p <host_port>:<container_port> 表示将容器的 <container_port> 端口映射到宿主机的 <host_port> 端口
 # -v <host_path>:<container_path> 表示将宿主机的 <host_path> 路径映射到容器的 <container_path> 路径
+
 # 示例
 podman run -d --name mysql -p 3306:3306 -v /home/<user>/mysql:/var/lib/mysql mysql:8.0.32
 ```

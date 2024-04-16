@@ -7,9 +7,11 @@ fail2ban 是 linux 下一个很常用的安全工具，通过监控系统日志�
 ```bash
 # 安装
 sudo apt-get install fail2ban
+
 # 启动服务
 sudo systemctl start fail2ban.service
 sudo systemctl enable fail2ban.service
+
 # 查看运行状态
 sudo systemctl status fail2ban.service
 ```
@@ -60,10 +62,13 @@ sudo systemctl restart fail2ban.service
 ```bash
 # 查看所有规则状态
 fail2ban-client status 
+
 # 查看具体规则状态
 fail2ban-client status sshd
+
 # 禁止 ip
 fail2ban-client set sshd banip 192.168.1.111
+
 # 解除禁止
 fail2ban-client set sshd unbanip 192.168.1.111
 ```
